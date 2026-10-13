@@ -790,22 +790,105 @@ h3 {
   pointer-events: none;
 }
 
+.online__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .stitched h3 {
   color: var(--stitch-title);
 }
 
-.stitched ul {
+/* A signal that keeps reaching out: the arcs light up from the dot outwards. */
+.online__signal {
+  flex: none;
   display: grid;
-  gap: 16px;
-  margin-top: 18px;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-sm);
+  background: linear-gradient(135deg, var(--tinted-1), var(--tinted-2));
+  color: var(--accent);
 }
 
-.stitched strong {
+.online__signal svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.online__signal circle {
+  fill: currentColor;
+  stroke: none;
+}
+
+.online__signal path {
+  animation: signal-arc 2.4s ease-in-out infinite;
+}
+
+.online__signal path:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.online__signal path:nth-child(3) {
+  animation-delay: -0.6s;
+}
+
+@keyframes signal-arc {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.online {
+  display: grid;
+  margin-top: 8px;
+}
+
+.online li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-block: 16px;
+}
+
+.online li + li {
+  border-top: 1px solid var(--border);
+}
+
+.online li:last-child {
+  padding-bottom: 0;
+}
+
+.stitched .online__tile {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-sm);
+  transition: transform 0.25s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.stitched .online__tile::after {
+  inset: 12px;
+}
+
+.online li:hover .online__tile {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.online__text strong {
   display: block;
   font-weight: 700;
 }
 
-.stitched span {
+.online__text span {
   color: var(--ink-muted);
   font-size: 0.9375rem;
 }
@@ -814,17 +897,279 @@ h3 {
 
 .trio {
   display: grid;
-  gap: 28px;
+  gap: 16px;
 }
 
 .trio li {
-  padding-top: 20px;
-  border-top: 2px dashed var(--border);
+  padding: 12px 12px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.trio h3,
+.trio p {
+  padding-inline: 12px;
+}
+
+.trio h3 {
+  margin-top: 20px;
 }
 
 .trio p {
-  margin-top: 8px;
+  margin-top: 6px;
   color: var(--ink-muted);
+}
+
+/* Home grid: two tiles trade places, and an unpinned one leaves its slot. */
+.mock--grid {
+  display: grid;
+  grid-template-columns: repeat(3, 44px);
+  gap: 10px;
+  width: auto;
+  direction: ltr;
+}
+
+.mock .grid__tile {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-sm);
+  box-shadow: none;
+}
+
+.mock .grid__tile::after {
+  inset: 12px;
+}
+
+.grid__tile--a {
+  z-index: 1;
+  animation: grid-swap-a 5s ease-in-out infinite;
+}
+
+.grid__tile--b {
+  animation: grid-swap-b 5s ease-in-out infinite;
+}
+
+.grid__tile--out {
+  animation: grid-out 5s ease-in-out infinite;
+}
+
+.grid__slot {
+  border: 2px dashed var(--border);
+  border-radius: var(--r-sm);
+}
+
+@keyframes grid-swap-a {
+  0%,
+  12%,
+  88%,
+  100% {
+    transform: none;
+    box-shadow: none;
+  }
+  22% {
+    transform: scale(1.14);
+    box-shadow: 0 10px 18px rgba(15, 23, 42, 0.22);
+  }
+  42% {
+    transform: translateX(54px) scale(1.14);
+    box-shadow: 0 10px 18px rgba(15, 23, 42, 0.22);
+  }
+  52%,
+  78% {
+    transform: translateX(54px);
+    box-shadow: none;
+  }
+}
+
+@keyframes grid-swap-b {
+  0%,
+  26%,
+  88%,
+  100% {
+    transform: none;
+  }
+  44%,
+  78% {
+    transform: translateX(-54px);
+  }
+}
+
+@keyframes grid-out {
+  0%,
+  50%,
+  94%,
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+  62%,
+  84% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+}
+
+/* Language: the same card, read left-to-right and then right-to-left. */
+.mock--lang {
+  display: grid;
+}
+
+.lang-face {
+  display: grid;
+  gap: 14px;
+  grid-area: 1 / 1;
+  animation: lang-face 6s ease-in-out infinite;
+}
+
+.lang-face--ar {
+  animation-delay: -3s;
+}
+
+.lang-face img {
+  width: 32px;
+  height: 32px;
+}
+
+.lang-face b {
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.lang-face--en b {
+  font-family: "Quicksand", sans-serif;
+}
+
+.lang-face--ar b {
+  font-family: "Cairo", sans-serif;
+}
+
+@keyframes lang-face {
+  0%,
+  40% {
+    opacity: 1;
+    transform: none;
+  }
+  50%,
+  90% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/*
+ * Theme: a mini screen that fades between the app's light and dark surfaces.
+ * Colours are fixed (colors.ts light → dark) so it shows both whatever the page theme is.
+ */
+.mock--theme {
+  animation: theme-surface 6s ease-in-out infinite;
+}
+
+.mock--theme .mock__lines i {
+  animation: theme-line 6s ease-in-out infinite;
+}
+
+.theme-orb {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  animation: theme-orb 6s ease-in-out infinite;
+}
+
+.theme-orb .glyph {
+  display: block;
+  grid-area: 1 / 1;
+  animation: theme-sun 6s ease-in-out infinite;
+}
+
+.theme-orb .glyph--moon-on {
+  animation-name: theme-moon;
+}
+
+.theme-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.theme-tiles span {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--g1), var(--g2));
+}
+
+@keyframes theme-surface {
+  0%,
+  38%,
+  100% {
+    background-color: #ffffff;
+  }
+  50%,
+  88% {
+    background-color: #181f2b;
+  }
+}
+
+@keyframes theme-line {
+  0%,
+  38%,
+  100% {
+    background-color: #e2e8f0;
+  }
+  50%,
+  88% {
+    background-color: #334155;
+  }
+}
+
+@keyframes theme-orb {
+  0%,
+  38%,
+  100% {
+    background-color: #fff3dd;
+  }
+  50%,
+  88% {
+    background-color: #232c3b;
+  }
+}
+
+@keyframes theme-sun {
+  0%,
+  38%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+  50%,
+  88% {
+    opacity: 0;
+    transform: rotate(60deg) scale(0.6);
+  }
+}
+
+@keyframes theme-moon {
+  0%,
+  38%,
+  100% {
+    opacity: 0;
+    transform: rotate(-60deg) scale(0.6);
+  }
+  50%,
+  88% {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ───────── Install ───────── */
@@ -1473,8 +1818,32 @@ h3 {
   .mock__toggle,
   .mock__toggle::before,
   .launch__ring,
-  .launch__tile {
+  .launch__tile,
+  .online__signal path,
+  .grid__tile,
+  .lang-face--en,
+  .mock--theme,
+  .mock--theme .mock__lines i,
+  .theme-orb,
+  .theme-orb .glyph {
     animation: none;
+  }
+
+  .lang-face--ar,
+  .theme-orb .glyph--moon-on {
+    display: none;
+  }
+
+  .theme-orb {
+    background: #fff3dd;
+  }
+
+  .mock--theme {
+    background: #ffffff;
+  }
+
+  .mock--theme .mock__lines i {
+    background: #e2e8f0;
   }
 
   .mock__toggle span {

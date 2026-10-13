@@ -340,28 +340,59 @@
           </div>
 
           <aside class="stitched reveal">
-            <h3 data-i18n="onlineTitle">The three times it goes online</h3>
-            <ul>
+            <div class="online__head">
+              <span class="online__signal" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M2.500 9.200a13.500 13.500 0 0 1 19 0" />
+                  <path d="M5.700 12.600a9 9 0 0 1 12.600 0" />
+                  <path d="M8.900 16a4.500 4.500 0 0 1 6.200 0" />
+                  <circle cx="12" cy="19.300" r="1.300" />
+                </svg>
+              </span>
+              <h3 data-i18n="onlineTitle">The three times it goes online</h3>
+            </div>
+            <ul class="online">
               <li>
-                <strong data-i18n="onlineAHead">Downloading a video</strong>
-                <span data-i18n="onlineABody"
-                  >The app fetches it from the link you paste.</span
-                >
+                <span
+                  class="tool__tile online__tile"
+                  style="--g1: #ff9c2e; --g2: #ff7a1a; --icon: url(assets/icons/download.svg)"
+                  aria-hidden="true"
+                ></span>
+                <div class="online__text">
+                  <strong data-i18n="onlineAHead">Downloading a video</strong>
+                  <span data-i18n="onlineABody"
+                    >The app fetches it from the link you paste.</span
+                  >
+                </div>
               </li>
               <li>
-                <strong data-i18n="onlineBHead">Translating a scan</strong>
-                <span data-i18n="onlineBBody"
-                  >Translation of scanned text needs a connection.</span
-                >
+                <span
+                  class="tool__tile online__tile"
+                  style="--g1: #42b8ff; --g2: #2096f3; --icon: url(assets/icons/scan.svg)"
+                  aria-hidden="true"
+                ></span>
+                <div class="online__text">
+                  <strong data-i18n="onlineBHead">Translating a scan</strong>
+                  <span data-i18n="onlineBBody"
+                    >Translation of scanned text needs a connection.</span
+                  >
+                </div>
               </li>
               <li>
-                <strong data-i18n="onlineCHead"
-                  >Your first transcription</strong
-                >
-                <span data-i18n="onlineCBody"
-                  >A one-time 181 MB speech model download. The app asks before
-                  it starts.</span
-                >
+                <span
+                  class="tool__tile online__tile"
+                  style="--g1: #818cf8; --g2: #6366f1; --icon: url(assets/icons/microphone.svg)"
+                  aria-hidden="true"
+                ></span>
+                <div class="online__text">
+                  <strong data-i18n="onlineCHead"
+                    >Your first transcription</strong
+                  >
+                  <span data-i18n="onlineCBody"
+                    >A one-time 181 MB speech model download. The app asks before
+                    it starts.</span
+                  >
+                </div>
               </li>
             </ul>
           </aside>
@@ -375,6 +406,31 @@
           </header>
           <ul class="trio">
             <li class="reveal">
+              <div class="step__art" aria-hidden="true">
+                <div class="mock mock--grid">
+                  <span
+                    class="tool__tile grid__tile grid__tile--a"
+                    style="--g1: #48dfa3; --g2: #2fcf8d; --icon: url(assets/icons/voice.svg)"
+                  ></span>
+                  <span
+                    class="tool__tile grid__tile grid__tile--b"
+                    style="--g1: #42b8ff; --g2: #2096f3; --icon: url(assets/icons/scan.svg)"
+                  ></span>
+                  <span
+                    class="tool__tile grid__tile"
+                    style="--g1: #ff9c2e; --g2: #ff7a1a; --icon: url(assets/icons/download.svg)"
+                  ></span>
+                  <span
+                    class="tool__tile grid__tile"
+                    style="--g1: #7c5cf6; --g2: #985ef5; --icon: url(assets/icons/folder.svg)"
+                  ></span>
+                  <span
+                    class="tool__tile grid__tile grid__tile--out"
+                    style="--g1: #f472b6; --g2: #ec4899; --icon: url(assets/icons/microphone.svg)"
+                  ></span>
+                  <span class="grid__slot"></span>
+                </div>
+              </div>
               <h3 data-i18n="y1Title">Your home screen, your order</h3>
               <p data-i18n="y1Body">
                 Pin the tools you use, drop the ones you don't, and drag them
@@ -382,6 +438,24 @@
               </p>
             </li>
             <li class="reveal">
+              <div class="step__art" aria-hidden="true">
+                <div class="mock mock--lang">
+                  <div class="lang-face lang-face--en" dir="ltr">
+                    <div class="mock__row">
+                      <img src="assets/flag-uk.png" alt="" width="32" height="32" />
+                      <b>Hello</b>
+                    </div>
+                    <span class="mock__lines"><i></i><i></i></span>
+                  </div>
+                  <div class="lang-face lang-face--ar" dir="rtl">
+                    <div class="mock__row">
+                      <img src="assets/flag-eg.png" alt="" width="32" height="32" />
+                      <b>مرحبًا</b>
+                    </div>
+                    <span class="mock__lines"><i></i><i></i></span>
+                  </div>
+                </div>
+              </div>
               <h3 data-i18n="y2Title">Arabic and English</h3>
               <p data-i18n="y2Body">
                 The whole app reads right-to-left in Arabic. Switch language
@@ -389,6 +463,23 @@
               </p>
             </li>
             <li class="reveal">
+              <div class="step__art" aria-hidden="true">
+                <div class="mock mock--theme">
+                  <div class="mock__row">
+                    <span class="theme-orb">
+                      <span class="glyph glyph--sun-on"></span>
+                      <span class="glyph glyph--moon-on"></span>
+                    </span>
+                    <span class="mock__lines"><i></i><i></i></span>
+                  </div>
+                  <div class="theme-tiles">
+                    <span style="--g1: #48dfa3; --g2: #2fcf8d"></span>
+                    <span style="--g1: #42b8ff; --g2: #2096f3"></span>
+                    <span style="--g1: #ff9c2e; --g2: #ff7a1a"></span>
+                    <span style="--g1: #7c5cf6; --g2: #985ef5"></span>
+                  </div>
+                </div>
+              </div>
               <h3 data-i18n="y3Title">Light and dark</h3>
               <p data-i18n="y3Body">
                 Every screen has both. So does this page - try the button in the
