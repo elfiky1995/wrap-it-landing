@@ -4,7 +4,7 @@
   "redirects": [
     {
       "source": "/download",
-      "destination": "https://github.com/Mahmoud-El-Fiky/wrap-it/releases/latest/download/wrap-it.apk",
+      "destination": "https://github.com/elfiky1995/wrap-it-landing/releases/latest/download/wrap-it.apk",
       "permanent": false
     }
   ],
