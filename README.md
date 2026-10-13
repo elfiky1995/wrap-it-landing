@@ -1,4 +1,4 @@
-# Wrap It — landing page
+# Wrap It - landing page
 
 Static marketing site for the Wrap It Android app. Plain HTML/CSS/JS, no build step.
 
@@ -21,7 +21,7 @@ directory: the repo root). Every push to `main` redeploys.
   colours, brand gradient, per-tool gradients and tints, radius, shadows.
 - English copy lives in `index.html`; Arabic lives in the `ar` map in `main.js`, keyed by
   `data-i18n`. Add every string to both.
-- Version, APK size, minimum Android version and the tool list are hardcoded copy — update
+- Version, APK size, minimum Android version and the tool list are hardcoded copy - update
   them when cutting a release.
 
 ## The Download button

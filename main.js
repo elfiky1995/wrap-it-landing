@@ -9,7 +9,7 @@ const ar = {
   heroPill: "تطبيق أندرويد · تحميل مباشر",
   heroTitle: 'كل ما تحتاجه، <span class="grad">في جيبك.</span>',
   heroLead:
-    "مجموعة أدوات للملفات والوسائط في تطبيق أندرويد واحد. استخرج الصوت من فيديو، امسح ورقة إلى PDF، حوّل الكلام إلى نص، واحتفظ بفيديو لوقت لاحق — وكل ذلك يتم على هاتفك.",
+    "مجموعة أدوات للملفات والوسائط في تطبيق أندرويد واحد. استخرج الصوت من فيديو، امسح ورقة إلى PDF، حوّل الكلام إلى نص، واحتفظ بفيديو لوقت لاحق - وكل ذلك يتم على هاتفك.",
   download: "حمّل لأندرويد",
   seeTools: "شاهد الأدوات",
   meta: "الإصدار 1.1.0 · 165 ميجابايت · أندرويد 7.0 أو أحدث · بدون حساب",
@@ -49,7 +49,7 @@ const ar = {
   privTitle: "ملفاتك تبقى على هاتفك.",
   privLead:
     "رابيت ليس له خادم خاص. التحويل والمسح والضغط والتفريغ تتم كلها على الجهاز، فلا شيء يُرفع ولا حساب تنشئه.",
-  privA: "بلا تسجيل ولا دخول — التطبيق يفتح مباشرة على أدواتك.",
+  privA: "بلا تسجيل ولا دخول - التطبيق يفتح مباشرة على أدواتك.",
   privB: "تفريغ الكلام يتم بنموذج يعمل على الهاتف نفسه.",
   privC: "معظم الأدوات تعمل بدون أي اتصال بالإنترنت.",
   onlineTitle: "ثلاث حالات فقط يتصل فيها بالإنترنت",
@@ -65,7 +65,7 @@ const ar = {
   y2Title: "العربية والإنجليزية",
   y2Body: "التطبيق كله يُعرض من اليمين إلى اليسار بالعربية. بدّل اللغة متى شئت.",
   y3Title: "فاتح وداكن",
-  y3Body: "كل شاشة لها الوضعان، وهذه الصفحة أيضًا — جرّب الزر في الأعلى.",
+  y3Body: "كل شاشة لها الوضعان، وهذه الصفحة أيضًا - جرّب الزر في الأعلى.",
   installTitle: "التثبيت في ثلاث خطوات",
   installLead: "رابيت غير متوفر على متجر Play. تحمّل ملف التطبيق من هذه الصفحة ويثبّته أندرويد.",
   s1Title: "حمّل الملف",
@@ -78,6 +78,15 @@ const ar = {
   pocketTitle: "ضعه في جيبك.",
   pocketBody: "تحميل واحد. ست أدوات جاهزة، واثنتان في الطريق.",
   footNote: "حمّل فقط الفيديوهات التي يحق لك حفظها.",
+  footTagline: "أدوات للملفات والوسائط تبقى على هاتفك.",
+  footExplore: "استكشف",
+  footYours: "التخصيص",
+  footApp: "التطبيق",
+  footVersion: "الإصدار 1.1.0",
+  footSize: "حجم التحميل 165 ميجابايت",
+  footAndroid: "أندرويد 7.0 أو أحدث",
+  footReleases: "ملاحظات الإصدار",
+  footCopy: "© 2026 رابيت",
 };
 
 const root = document.documentElement;
@@ -112,9 +121,7 @@ function applyLanguage(lang) {
   htmlNodes.forEach((el) => {
     el.innerHTML = copy[el.dataset.i18nHtml] ?? en[el.dataset.i18nHtml];
   });
-  // The toggle names the language you would switch to, written in that language.
-  langToggle.textContent = lang === "ar" ? "English" : "العربية";
-  langToggle.lang = lang === "ar" ? "en" : "ar";
+  langToggle.setAttribute("aria-label", lang === "ar" ? "Switch to English" : "التبديل إلى العربية");
 }
 
 applyLanguage(root.lang === "ar" ? "ar" : "en");
@@ -127,23 +134,48 @@ langToggle.addEventListener("click", () => {
 
 const themeMeta = document.querySelector('meta[name="theme-color"]');
 
+const themeToggle = document.getElementById("theme-toggle");
+
 function applyTheme(theme) {
   root.dataset.theme = theme;
+  themeToggle.setAttribute("aria-checked", String(theme === "dark"));
+  themeToggle.setAttribute("aria-label", "Dark theme");
   themeMeta.content = theme === "dark" ? "#0B1019" : "#F7F8FC";
 }
 
 applyTheme(root.dataset.theme);
 
-document.getElementById("theme-toggle").addEventListener("click", () => {
+themeToggle.addEventListener("click", () => {
   const next = root.dataset.theme === "dark" ? "light" : "dark";
   applyTheme(next);
   save("wrap-it-theme", next);
 });
 
 const nav = document.querySelector(".nav");
-const onScroll = () => nav.classList.toggle("is-stuck", window.scrollY > 8);
+const navLinks = [...document.querySelectorAll(".nav__links a")].map((link) => ({
+  link,
+  section: document.querySelector(link.getAttribute("href")),
+}));
+
+// A link is active while its section crosses a line just under the sticky nav.
+function markActiveLink() {
+  const probe = nav.offsetHeight + 40;
+  navLinks.forEach(({ link, section }) => {
+    const { top, bottom } = section.getBoundingClientRect();
+    const active = top <= probe && bottom > probe;
+    link.classList.toggle("is-active", active);
+    if (active) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  });
+}
+
+const onScroll = () => {
+  nav.classList.toggle("is-stuck", window.scrollY > 8);
+  markActiveLink();
+};
 onScroll();
 window.addEventListener("scroll", onScroll, { passive: true });
+window.addEventListener("resize", markActiveLink);
 
 const revealObserver = new IntersectionObserver(
   (entries) => {

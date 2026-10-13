@@ -5,7 +5,7 @@
  */
 
 :root {
-  /* colors.ts — lightColors */
+  /* colors.ts - lightColors */
   --background: #f7f8fc;
   --surface: #ffffff;
   --ink: #18212f;
@@ -42,7 +42,7 @@
 }
 
 :root[data-theme="dark"] {
-  /* colors.ts — darkColors */
+  /* colors.ts - darkColors */
   --background: #0b1019;
   --surface: #181f2b;
   --ink: #f1f5f9;
@@ -198,7 +198,8 @@ button {
 
 /* Phones keep the sticky Download button; the wordmark gives way to make room. */
 @media (max-width: 419px) {
-  .nav .brand span {
+  .nav .brand span,
+  .nav .btn__icon {
     display: none;
   }
 }
@@ -216,13 +217,37 @@ button {
 .nav__links {
   display: none;
   gap: 28px;
-  margin-inline-start: 28px;
+  margin-inline: auto;
   color: var(--ink-muted);
   font-weight: 600;
 }
 
-.nav__links a:hover {
+.nav__links a {
+  position: relative;
+  padding-block: 6px;
+  transition: color 0.2s;
+}
+
+.nav__links a:hover,
+.nav__links a.is-active {
   color: var(--ink);
+}
+
+/* The section you are reading gets the brand gradient as an underline. */
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.nav__links a.is-active::after {
+  transform: scaleX(1);
 }
 
 .nav__actions {
@@ -232,52 +257,146 @@ button {
   margin-inline-start: auto;
 }
 
-.chip-btn,
-.icon-btn {
-  display: inline-grid;
-  place-items: center;
-  height: 40px;
+/*
+ * Language and theme switches — ports of the app's SwitchLang / SwitchTheme
+ * (src/components/ui): a 70×38 pill with a 28px knob that slides 32px, while the
+ * inactive glyph slides the other way. Sizes are in px so the Arabic root scale
+ * doesn't shrink them, and the track stays left-to-right like the app's.
+ */
+.switch {
+  position: relative;
+  flex: none;
+  width: 70px;
+  height: 38px;
+  padding: 0;
   border: 1px solid var(--border);
-  border-radius: var(--r-sm);
+  border-radius: 999px;
   background: var(--surface);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
   cursor: pointer;
+  direction: ltr;
+  transition:
+    transform 0.12s,
+    background-color 0.3s;
 }
 
-.chip-btn {
-  padding-inline: 12px;
-  font-size: 0.875rem;
+.switch:active {
+  transform: scale(0.95);
+}
+
+.switch__knob,
+.switch__rest {
+  position: absolute;
+  top: 4px;
+  left: 5px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.switch__knob {
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.switch__rest {
+  transform: translateX(32px);
+}
+
+.switch--lang .switch__rest {
+  color: var(--ink-muted);
+  font-size: 12px;
   font-weight: 700;
+  line-height: 16px;
+  white-space: nowrap;
 }
 
-.chip-btn[lang="ar"] {
+.switch img {
+  width: 28px;
+  height: 28px;
+}
+
+.code-ar {
   font-family: "Cairo", sans-serif;
 }
 
-.chip-btn[lang="en"] {
+.code-en {
   font-family: "Quicksand", sans-serif;
+  letter-spacing: 0.8px;
 }
 
-.icon-btn {
-  width: 40px;
-}
-
-.icon-btn svg {
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.icon-moon,
-[data-theme="dark"] .icon-sun {
+/* The switch shows the language you would switch to, as in the app. */
+.flag-uk,
+.code-en,
+:root[lang="ar"] .flag-eg,
+:root[lang="ar"] .code-ar {
   display: none;
 }
 
-[data-theme="dark"] .icon-moon {
+:root[lang="ar"] .flag-uk,
+:root[lang="ar"] .code-en {
   display: block;
+}
+
+:root[lang="ar"] .switch--lang .switch__knob {
+  transform: translateX(32px);
+}
+
+:root[lang="ar"] .switch--lang .switch__rest {
+  transform: none;
+}
+
+.glyph {
+  width: 22px;
+  height: 22px;
+  background: var(--ink-muted);
+  -webkit-mask: var(--glyph) center / contain no-repeat;
+  mask: var(--glyph) center / contain no-repeat;
+}
+
+.glyph--sun-on {
+  --glyph: url(assets/icons/sun-highlighted.svg);
+  background: #f59e0b; /* lightColors.warning */
+}
+
+.glyph--moon-on {
+  --glyph: url(assets/icons/moon-highlighted.svg);
+  background: #f1f5f9; /* darkColors.ink */
+}
+
+.glyph--moon-off {
+  --glyph: url(assets/icons/moon.svg);
+}
+
+.glyph--sun-off {
+  --glyph: url(assets/icons/sun.svg);
+}
+
+.glyph--moon-on,
+.glyph--sun-off,
+[data-theme="dark"] .glyph--sun-on,
+[data-theme="dark"] .glyph--moon-off {
+  display: none;
+}
+
+[data-theme="dark"] .glyph--moon-on,
+[data-theme="dark"] .glyph--sun-off {
+  display: block;
+}
+
+[data-theme="dark"] .switch--theme {
+  background: #232c3b; /* darkColors.surfaceMuted */
+}
+
+[data-theme="dark"] .switch--theme .switch__knob {
+  transform: translateX(32px) rotate(18deg);
+}
+
+[data-theme="dark"] .switch--theme .switch__rest {
+  transform: rotate(-18deg);
 }
 
 /* ───────── Buttons ───────── */
@@ -303,10 +422,16 @@ button {
 }
 
 .btn--sm {
+  gap: 7px;
   min-height: 40px;
-  padding: 0 16px;
+  padding: 0 14px;
   border-radius: var(--r-sm);
   font-size: 0.9375rem;
+}
+
+.btn--sm .btn__icon {
+  width: 18px;
+  height: 18px;
 }
 
 .btn--primary {
@@ -343,8 +468,8 @@ button {
   width: 22px;
   height: 22px;
   background: currentColor;
-  -webkit-mask: url(assets/icons/download.svg) center / contain no-repeat;
-  mask: url(assets/icons/download.svg) center / contain no-repeat;
+  -webkit-mask: url(assets/icons/android.svg) center / contain no-repeat;
+  mask: url(assets/icons/android.svg) center / contain no-repeat;
 }
 
 /* ───────── Hero ───────── */
@@ -712,34 +837,362 @@ h3 {
 
 .steps li {
   position: relative;
-  padding: 22px 22px 24px;
-  padding-inline-start: 82px;
+  padding: 12px 12px 24px;
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   background: var(--surface);
+  box-shadow: var(--shadow-soft);
   counter-increment: step;
 }
 
+/* Step number, pinned to the corner of the illustration. */
 .steps li::before {
   content: counter(step);
   position: absolute;
-  inset-inline-start: 22px;
-  top: 22px;
+  z-index: 2;
+  inset-inline-start: 24px;
+  top: 24px;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--r-sm);
-  background: linear-gradient(135deg, var(--tinted-1), var(--tinted-2));
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
   color: var(--stitch-title);
   font-family: "Quicksand", sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 700;
+}
+
+.steps h3,
+.steps p {
+  padding-inline: 12px;
+}
+
+.steps h3 {
+  margin-top: 20px;
 }
 
 .steps p {
   margin-top: 6px;
   color: var(--ink-muted);
+}
+
+/* Each step's stage: the tinted wash plus the confetti dots from the hero art. */
+.step__art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 176px;
+  border-radius: var(--r-md);
+  background:
+    radial-gradient(circle at 14% 78%, #f6c177 0 3px, transparent 4px),
+    radial-gradient(circle at 88% 20%, #c4b5fd 0 4px, transparent 5px),
+    radial-gradient(circle at 80% 84%, #f9a8d4 0 3px, transparent 4px),
+    radial-gradient(circle at 52% 10%, #7dd3fc 0 2.5px, transparent 3.5px),
+    linear-gradient(135deg, var(--tinted-1), var(--tinted-2));
+  overflow: hidden;
+}
+
+/* Steps 1 and 2: a small card lifted from the phone's own UI. */
+.mock {
+  width: min(82%, 236px);
+  padding: 14px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+.mock__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mock__tile {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-sm);
+}
+
+.mock__tile--brand {
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+}
+
+.mock__tile--brand::after {
+  content: "";
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  -webkit-mask: url(assets/icons/android.svg) center / contain no-repeat;
+  mask: url(assets/icons/android.svg) center / contain no-repeat;
+}
+
+.mock__tile--shield {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.mock__tile--shield svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mock__text {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  font-family: "Quicksand", sans-serif;
+  line-height: 1.3;
+  text-align: left;
+}
+
+.mock__text b {
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.mock__text small {
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.mock__check {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M6.5 11.4l3 3 6-6.4' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+      center / contain no-repeat,
+    var(--success);
+  animation: mock-check 4.5s ease-in-out infinite;
+}
+
+.mock__bar {
+  height: 6px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: var(--border);
+  overflow: hidden;
+  direction: ltr;
+}
+
+.mock__bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  transform-origin: left;
+  animation: mock-fill 4.5s ease-in-out infinite;
+}
+
+@keyframes mock-fill {
+  0%,
+  8% {
+    transform: scaleX(0);
+  }
+  62%,
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes mock-check {
+  0%,
+  62% {
+    transform: scale(0);
+  }
+  72% {
+    transform: scale(1.15);
+  }
+  78%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+.mock__lines {
+  display: grid;
+  flex: 1;
+  gap: 7px;
+}
+
+.mock__lines i {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--border);
+}
+
+.mock__lines i:last-child {
+  width: 62%;
+  opacity: 0.6;
+}
+
+.mock__toggle {
+  position: relative;
+  flex: none;
+  width: 44px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--border);
+  direction: ltr;
+  animation: toggle-track 4.5s ease-in-out infinite;
+}
+
+.mock__toggle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  animation: toggle-on 4.5s ease-in-out infinite;
+}
+
+.mock__toggle span {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.2);
+  animation: toggle-knob 4.5s cubic-bezier(0.34, 1.4, 0.64, 1) infinite;
+}
+
+@keyframes toggle-on {
+  0%,
+  30% {
+    opacity: 0;
+  }
+  42%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes toggle-knob {
+  0%,
+  30% {
+    transform: none;
+  }
+  44%,
+  100% {
+    transform: translateX(18px);
+  }
+}
+
+@keyframes toggle-track {
+  30% {
+    transform: scale(1);
+  }
+  34% {
+    transform: scale(0.92);
+  }
+  42% {
+    transform: scale(1);
+  }
+}
+
+/* Step 3: the app icon with its tools gathered around it. */
+.launch {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 220px;
+  height: 150px;
+}
+
+.launch__icon {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  padding: 11px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  box-shadow: 0 12px 24px rgba(109, 93, 246, 0.36);
+  object-fit: contain;
+}
+
+.launch__ring {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border: 2px solid var(--brand-2);
+  border-radius: var(--r-lg);
+  opacity: 0;
+  animation: launch-ring 3s ease-out infinite;
+}
+
+.launch__ring + .launch__ring {
+  animation-delay: 1.5s;
+}
+
+@keyframes launch-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.launch .launch__tile {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--r-sm);
+  animation: launch-float 5s ease-in-out infinite;
+}
+
+.launch .launch__tile::after {
+  inset: 10px;
+}
+
+.launch__tile:nth-of-type(3) {
+  top: 6px;
+  left: 14px;
+  rotate: -10deg;
+}
+
+.launch__tile:nth-of-type(4) {
+  top: 0;
+  right: 18px;
+  rotate: 9deg;
+  animation-delay: -1.2s;
+}
+
+.launch__tile:nth-of-type(5) {
+  bottom: 4px;
+  left: 26px;
+  rotate: 7deg;
+  animation-delay: -2.4s;
+}
+
+.launch__tile:nth-of-type(6) {
+  bottom: 10px;
+  right: 10px;
+  rotate: -8deg;
+  animation-delay: -3.6s;
+}
+
+@keyframes launch-float {
+  50% {
+    transform: translateY(-7px);
+  }
 }
 
 /* ───────── Pocket CTA ───────── */
@@ -797,28 +1250,72 @@ h3 {
 /* ───────── Footer ───────── */
 
 .footer {
-  padding-block: 28px 40px;
+  margin-top: 24px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
   color: var(--ink-muted);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
 }
 
-.footer__inner {
+.footer__top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px 24px;
+  padding-block: 48px 36px;
+}
+
+.footer__brand {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
+  align-items: flex-start;
+  gap: 14px;
+  grid-column: 1 / -1;
 }
 
 .footer .brand {
   color: var(--ink);
-  font-size: 1.0625rem;
 }
 
-.footer .brand img {
-  width: 32px;
-  height: 32px;
-  padding: 5px;
+.footer__brand p {
+  max-width: 22rem;
+}
+
+.footer__brand .btn {
+  margin-top: 6px;
+}
+
+/* Column headings are small labels, not page headings. */
+.footer__col h2 {
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.footer__col ul {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.footer__col a {
+  transition: color 0.2s;
+}
+
+.footer__col a:hover {
+  color: var(--ink);
+}
+
+/* The pocket's stitch closes the page. */
+.footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-block: 22px 32px;
+  border-top: 2px dashed var(--border);
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
 }
 
 /* ───────── Scroll reveal (only when JS is running) ───────── */
@@ -858,6 +1355,11 @@ h3 {
 
   .nav__links {
     display: flex;
+  }
+
+  /* The links' auto margins now centre them between the brand and the switches. */
+  .nav__actions {
+    margin-inline-start: 0;
   }
 
   .hero {
@@ -905,14 +1407,6 @@ h3 {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .steps li {
-    padding: 82px 26px 28px;
-  }
-
-  .steps li::before {
-    inset-inline-start: 26px;
-    top: 24px;
-  }
 
   .section--pocket {
     padding-top: 120px;
@@ -933,10 +1427,19 @@ h3 {
     width: 156px;
   }
 
-  .footer__inner {
+  .footer__top {
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 48px;
+    padding-block: 64px 48px;
+  }
+
+  .footer__brand {
+    grid-column: auto;
+  }
+
+  .footer__bottom {
     flex-direction: row;
     justify-content: space-between;
-    text-align: start;
   }
 }
 
@@ -956,7 +1459,26 @@ h3 {
   }
 
   .btn,
-  .tool {
+  .tool,
+  .switch,
+  .switch__knob,
+  .switch__rest,
+  .nav__links a::after {
     transition: none;
+  }
+
+  /* Illustrations settle on their finished state: downloaded, allowed, open. */
+  .mock__bar span,
+  .mock__check,
+  .mock__toggle,
+  .mock__toggle::before,
+  .launch__ring,
+  .launch__tile {
+    animation: none;
+  }
+
+  .mock__toggle span {
+    animation: none;
+    transform: translateX(18px);
   }
 }
