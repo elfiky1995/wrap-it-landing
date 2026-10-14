@@ -1224,6 +1224,13 @@ h3 {
   color: var(--ink-muted);
 }
 
+.steps p a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* Each step's stage: the tinted wash plus the confetti dots from the hero art. */
 .step__art {
   position: relative;

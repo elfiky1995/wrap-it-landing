@@ -6,6 +6,11 @@
       "source": "/download",
       "destination": "https://github.com/elfiky1995/wrap-it-landing/releases/latest/download/wrap-it.apk",
       "permanent": false
+    },
+    {
+      "source": "/download-32bit",
+      "destination": "https://github.com/elfiky1995/wrap-it-landing/releases/latest/download/wrap-it-armeabi-v7a.apk",
+      "permanent": false
     }
   ],
   "headers": [
