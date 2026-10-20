@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy policy - Wrap It</title>
+    <meta
+      name="description"
+      content="What the Wrap It Android app collects, what stays on your phone, and the choices you have about ads and crash reports."
+    />
+    <meta name="theme-color" content="#F7F8FC" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+    <script>
+      // Same saved theme and language as the home page, applied before first paint.
+      (function () {
+        var root = document.documentElement;
+        var theme, lang;
+        try {
+          theme = localStorage.getItem("wrap-it-theme");
+          lang = localStorage.getItem("wrap-it-lang");
+        } catch (e) {}
+        if (!theme) {
+          theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+        if (!lang) {
+          lang =
+            (navigator.language || "en").toLowerCase().indexOf("ar") === 0
+              ? "ar"
+              : "en";
+        }
+        root.dataset.theme = theme;
+        root.lang = lang;
+        root.dir = lang === "ar" ? "rtl" : "ltr";
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800&family=Quicksand:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .policy {
+        max-width: 760px;
+        padding-block: 48px 72px;
+      }
+      .policy h1 {
+        font-size: clamp(30px, 5vw, 42px);
+        line-height: 1.15;
+        margin: 0 0 8px;
+      }
+      .policy h2 {
+        font-size: 21px;
+        margin: 36px 0 10px;
+      }
+      .policy p,
+      .policy li {
+        color: var(--ink-muted);
+        line-height: 1.7;
+      }
+      .policy ul {
+        padding-inline-start: 22px;
+      }
+      .policy strong {
+        color: var(--ink);
+      }
+      .policy a {
+        color: var(--accent);
+        font-weight: 700;
+      }
+      .policy__date {
+        color: var(--ink-soft);
+        margin: 0 0 28px;
+      }
+      .policy__lang-switch {
+        background: none;
+        border: 1px solid var(--border, currentColor);
+        border-radius: 999px;
+        color: var(--ink);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 700;
+        padding: 6px 14px;
+      }
+      :root[lang="ar"] .policy [data-lang="en"],
+      :root:not([lang="ar"]) .policy [data-lang="ar"] {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="nav">
+      <div class="nav__inner container">
+        <a class="brand" href="/" aria-label="Wrap It">
+          <img src="assets/logo.png" alt="" width="431" height="466" />
+          <span>Wrap It</span>
+        </a>
+        <button class="policy__lang-switch" id="lang-toggle" type="button"></button>
+      </div>
+    </header>
+
+    <main class="policy container" id="main">
+      <!-- English -->
+      <article data-lang="en" lang="en" dir="ltr">
+        <h1>Privacy policy</h1>
+        <p class="policy__date">Last updated: 20 October 2026</p>
+
+        <p>
+          Wrap It is an Android app of file and media tools. It has no accounts and no server of
+          its own. This page explains what leaves your phone, why, and the choices you have.
+        </p>
+
+        <h2>Your files stay on your phone</h2>
+        <p>
+          Converting video to audio, voice effects, scanning, text recognition, compression and
+          speech-to-text all run on your device. Wrap It never uploads your files, recordings,
+          scans or transcripts, and the developer never sees them.
+        </p>
+
+        <h2>Ads</h2>
+        <p>
+          Wrap It is free and shows ads. Ads are provided by a third-party ad network, which may
+          collect your device's <strong>advertising ID</strong>, IP address, device model,
+          operating system and language, and how you interact with ads, to show, measure and
+          limit ads and to prevent fraud.
+        </p>
+        <ul>
+          <li>
+            <strong>In the EEA, the UK and Switzerland</strong>, the app asks before ads may be
+            personalized. If you say no, you still see ads, but they aren't based on your
+            interests.
+          </li>
+          <li>
+            <strong>Everywhere</strong>, you can turn personalized ads on or off in the app under
+            Settings → Privacy → Personalized ads.
+          </li>
+          <li>
+            You can also reset or delete your advertising ID in Android Settings → Privacy → Ads
+            (the exact path depends on your phone).
+          </li>
+        </ul>
+        <p>Ads never receive your files or anything you create in the app.</p>
+
+        <h2>Crash reports</h2>
+        <p>
+          When the app crashes, it sends a crash report to Google Firebase Crashlytics: your phone
+          model, Android version, app version and the technical details of the error. Crash
+          reports never include your files. You can turn them off under Settings → App → Send
+          crash reports.
+        </p>
+
+        <h2>Other times the app goes online</h2>
+        <ul>
+          <li>
+            <strong>Translating a scan</strong> sends the recognised text (not the image) to
+            Google Translate.
+          </li>
+          <li>
+            <strong>Your first transcription</strong> downloads the speech model from Hugging
+            Face, after asking you. Nothing is uploaded.
+          </li>
+          <li>
+            <strong>Update checks</strong> ask GitHub and Expo for a newer version. These requests
+            carry no personal information beyond what any web request does (such as your IP
+            address).
+          </li>
+        </ul>
+
+        <h2>Permissions</h2>
+        <p>
+          Wrap It asks for the microphone (recording and live transcription), access to your
+          media files (picking what to convert and saving results) and notifications (progress
+          of long tasks). Each is used only for the tool you're using.
+        </p>
+
+        <h2>Children</h2>
+        <p>
+          Wrap It isn't directed at children under 13 and doesn't knowingly collect their
+          information.
+        </p>
+
+        <h2>Your rights</h2>
+        <p>
+          The app keeps no data about you on any server of ours, so there is nothing for us to
+          export or delete. For data held by the ad network or Firebase, use the controls above
+          or their own privacy pages. Uninstalling the app removes everything it stored on your
+          phone.
+        </p>
+
+        <h2>Changes and contact</h2>
+        <p>
+          If this policy changes, the date at the top changes too. Questions? Open an issue at
+          <a href="https://github.com/elfiky1995/wrap-it-landing/issues"
+            >github.com/elfiky1995/wrap-it-landing</a
+          >.
+        </p>
+      </article>
+
+      <!-- العربية -->
+      <article data-lang="ar" lang="ar" dir="rtl">
+        <h1>سياسة الخصوصية</h1>
+        <p class="policy__date">آخر تحديث: 20 أكتوبر 2026</p>
+
+        <p>
+          Wrap It تطبيق أندرويد لأدوات الملفات والوسائط، بلا حسابات وبلا خادم خاص به. توضح هذه
+          الصفحة ما الذي يخرج من هاتفك ولماذا، والخيارات المتاحة لك.
+        </p>
+
+        <h2>ملفاتك تبقى على هاتفك</h2>
+        <p>
+          تحويل الفيديو إلى صوت، وتغيير الصوت، والمسح الضوئي، والتعرف على النصوص، والضغط،
+          وتفريغ الكلام إلى نص، كلها تتم على جهازك. لا يرفع Wrap It ملفاتك أو تسجيلاتك أو مسوحاتك
+          أو نصوصك أبدًا، ولا يراها المطوّر.
+        </p>
+
+        <h2>الإعلانات</h2>
+        <p>
+          Wrap It مجاني ويعرض إعلانات. تقدّم الإعلانات شبكة إعلانية خارجية قد تجمع
+          <strong>المعرّف الإعلاني</strong> لجهازك، وعنوان IP، وطراز الجهاز، ونظام التشغيل واللغة،
+          وتفاعلك مع الإعلانات، وذلك لعرض الإعلانات وقياسها وتحديد عدد مرات ظهورها ومنع الاحتيال.
+        </p>
+        <ul>
+          <li>
+            <strong>في المنطقة الاقتصادية الأوروبية والمملكة المتحدة وسويسرا</strong> يسألك التطبيق
+            قبل تخصيص الإعلانات. إن رفضت ستظهر لك الإعلانات أيضًا، لكنها لن تعتمد على اهتماماتك.
+          </li>
+          <li>
+            <strong>في كل مكان</strong> يمكنك تشغيل الإعلانات المخصّصة أو إيقافها من التطبيق:
+            الإعدادات ← الخصوصية ← الإعلانات المخصّصة.
+          </li>
+          <li>
+            ويمكنك أيضًا إعادة ضبط المعرّف الإعلاني أو حذفه من إعدادات أندرويد ← الخصوصية ←
+            الإعلانات (يختلف المسار حسب الهاتف).
+          </li>
+        </ul>
+        <p>لا تصل الإعلانات أبدًا إلى ملفاتك أو أي شيء تنشئه في التطبيق.</p>
+
+        <h2>تقارير الأعطال</h2>
+        <p>
+          عند حدوث عطل، يرسل التطبيق تقريرًا إلى Google Firebase Crashlytics يتضمن طراز هاتفك
+          وإصدار أندرويد وإصدار التطبيق والتفاصيل التقنية للخطأ، ولا يتضمن ملفاتك أبدًا. يمكنك
+          إيقافها من الإعدادات ← التطبيق ← إرسال تقارير الأعطال.
+        </p>
+
+        <h2>متى يتصل التطبيق بالإنترنت أيضًا</h2>
+        <ul>
+          <li>
+            <strong>ترجمة المسح</strong> ترسل النص المستخرج (وليس الصورة) إلى ترجمة Google.
+          </li>
+          <li>
+            <strong>أول تفريغ صوتي</strong> ينزّل نموذج الكلام من Hugging Face بعد أن يسألك، ولا
+            يرفع أي شيء.
+          </li>
+          <li>
+            <strong>البحث عن تحديثات</strong> يسأل GitHub وExpo عن إصدار أحدث، ولا يحمل أي معلومات
+            شخصية غير ما يحمله أي طلب على الإنترنت (مثل عنوان IP).
+          </li>
+        </ul>
+
+        <h2>الأذونات</h2>
+        <p>
+          يطلب Wrap It إذن الميكروفون (للتسجيل والتفريغ المباشر)، والوصول إلى ملفات الوسائط
+          (لاختيار ما تريد تحويله وحفظ النتائج)، والإشعارات (لمتابعة المهام الطويلة). ويُستخدم كل
+          إذن فقط للأداة التي تستعملها.
+        </p>
+
+        <h2>الأطفال</h2>
+        <p>Wrap It غير موجّه للأطفال دون 13 عامًا، ولا يجمع بياناتهم عن قصد.</p>
+
+        <h2>حقوقك</h2>
+        <p>
+          لا يحتفظ التطبيق بأي بيانات عنك على خادم خاص بنا، فلا يوجد ما نصدّره أو نحذفه. أما
+          البيانات لدى الشبكة الإعلانية أو Firebase فاستخدم الخيارات أعلاه أو صفحات الخصوصية
+          الخاصة بها. وحذف التطبيق يزيل كل ما حفظه على هاتفك.
+        </p>
+
+        <h2>التغييرات والتواصل</h2>
+        <p>
+          إذا تغيّرت هذه السياسة سيتغيّر التاريخ في أعلاها. لأي سؤال افتح مشكلة على
+          <a href="https://github.com/elfiky1995/wrap-it-landing/issues" dir="ltr"
+            >github.com/elfiky1995/wrap-it-landing</a
+          >.
+        </p>
+      </article>
+    </main>
+
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var toggle = document.getElementById("lang-toggle");
+        function apply(lang) {
+          root.lang = lang;
+          root.dir = lang === "ar" ? "rtl" : "ltr";
+          toggle.textContent = lang === "ar" ? "English" : "عربى";
+          document.title = lang === "ar" ? "سياسة الخصوصية - Wrap It" : "Privacy policy - Wrap It";
+        }
+        apply(root.lang === "ar" ? "ar" : "en");
+        toggle.addEventListener("click", function () {
+          var next = root.lang === "ar" ? "en" : "ar";
+          apply(next);
+          try {
+            localStorage.setItem("wrap-it-lang", next);
+          } catch (e) {}
+        });
+      })();
+    </script>
+  </body>
+</html>
