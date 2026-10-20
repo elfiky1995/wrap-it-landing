@@ -21,6 +21,10 @@ directory: the repo root). Every push to `main` redeploys.
   colours, brand gradient, per-tool gradients and tints, radius, shadows.
 - English copy lives in `index.html`; Arabic lives in the `ar` map in `main.js`, keyed by
   `data-i18n`. Add every string to both.
+- `privacy.html` repeats the home page's header and footer, with section links pointing at
+  `/#section`, and loads the same `main.js`. Change both pages together. Its policy text is
+  in the page itself, one `<article data-lang>` per language, so it isn't in the `ar` map.
+- `app-ads.txt` must stay a plain-text file holding only the AdMob line.
 - Version, APK size, minimum Android version and the tool list are hardcoded copy - update
   them when cutting a release.
 

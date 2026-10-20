@@ -9,12 +9,12 @@ const ar = {
   heroPill: "تطبيق أندرويد · تحميل مباشر",
   heroTitle: 'كل ما تحتاجه، <span class="grad">في جيبك.</span>',
   heroLead:
-    "مجموعة أدوات للملفات والوسائط في تطبيق أندرويد واحد. استخرج الصوت من فيديو، امسح ورقة إلى PDF، حوّل الكلام إلى نص، واحتفظ بفيديو لوقت لاحق - وكل ذلك يتم على هاتفك.",
+    "مجموعة أدوات للملفات والوسائط في تطبيق أندرويد واحد. استخرج الصوت من فيديو، امسح ورقة إلى PDF، حوّل الكلام إلى نص، وغيّر صوتك - وكل ذلك يتم على هاتفك.",
   download: "حمّل لأندرويد",
   seeTools: "شاهد الأدوات",
-  meta: "الإصدار 1.2.1 · 46 ميجابايت · أندرويد 7.0 أو أحدث · بدون حساب",
+  meta: "الإصدار 1.3.0 · 44 ميجابايت · أندرويد 7.0 أو أحدث · بدون حساب",
   toolsTitle: "ماذا يوجد في الجيب",
-  toolsLead: "ست أدوات تعمل اليوم، وأداتان في الطريق ولهما مكان محجوز على الشاشة الرئيسية.",
+  toolsLead: "خمس أدوات تعمل اليوم، وثلاث في الطريق ولها مكان محجوز على الشاشة الرئيسية.",
   t1Title: "فيديو إلى صوت",
   t1Body: "استخرج الصوت من أي فيديو محفوظ على هاتفك.",
   t1TagA: "اختر معدل البت",
@@ -35,9 +35,7 @@ const ar = {
   t4TagB: "إلى نص",
   t4TagC: "إلى ترجمة",
   t5Title: "التحميل",
-  t5Body: "الصق رابطًا، اختر الجودة، واحتفظ بالفيديو للمشاهدة دون اتصال.",
-  t5TagA: "فيديو أو MP3",
-  t5TagB: "قوائم تشغيل كاملة",
+  t5Body: "احفظ الفيديو من رابط للمشاهدة دون اتصال. متوقف مؤقتًا.",
   t6Title: "ضغط الملفات",
   t6Body: "صغّر الصور والفيديو والصوت والمستندات، أو اجمعها في ملف ‎.zip واحد.",
   t6TagA: "اختر قوة الضغط",
@@ -53,8 +51,8 @@ const ar = {
   privB: "تفريغ الكلام يتم بنموذج يعمل على الهاتف نفسه.",
   privC: "معظم الأدوات تعمل بدون أي اتصال بالإنترنت.",
   onlineTitle: "ثلاث حالات فقط يتصل فيها بالإنترنت",
-  onlineAHead: "تحميل فيديو",
-  onlineABody: "يجلبه التطبيق من الرابط الذي تلصقه.",
+  onlineAHead: "حفظ النتيجة أو مشاركتها",
+  onlineABody: "يُحمَّل إعلان فيديو قصير أولًا، وهذا ما يُبقي رابيت مجانيًا.",
   onlineBHead: "ترجمة مستند ممسوح",
   onlineBBody: "ترجمة النص الممسوح تحتاج إلى اتصال.",
   onlineCHead: "أول تفريغ صوتي",
@@ -70,22 +68,22 @@ const ar = {
   installLead: "رابيت غير متوفر على متجر Play. تحمّل ملف التطبيق من هذه الصفحة ويثبّته أندرويد.",
   s1Title: "حمّل الملف",
   s1Body:
-    'افتح هذه الصفحة على هاتف أندرويد واضغط «تحميل». حجمه 46 ميجابايت، لذا يفضّل Wi-Fi. هاتفك قديم بنظام 32 بت؟ حمّل <a href="/download-32bit">نسخة 32 بت</a> (42 ميجابايت) بدلًا منه.',
+    'افتح هذه الصفحة على هاتف أندرويد واضغط «تحميل». حجمه 44 ميجابايت، لذا يفضّل Wi-Fi. هاتفك قديم بنظام 32 بت؟ حمّل <a href="/download-32bit">نسخة 32 بت</a> (40 ميجابايت) بدلًا منه.',
   s2Title: "اسمح بالتثبيت",
   s2Body:
     "يسألك أندرويد مرة واحدة إن كان المتصفح مسموحًا له بتثبيت التطبيقات. يظهر هذا مع أي تطبيق من خارج متجر Play.",
   s3Title: "افتح رابيت",
   s3Body: "لا يوجد ما تُعدّه. أدواتك في انتظارك على الشاشة الرئيسية.",
   pocketTitle: "ضعه في جيبك.",
-  pocketBody: "تحميل واحد. ست أدوات جاهزة، واثنتان في الطريق.",
-  footNote: "حمّل فقط الفيديوهات التي يحق لك حفظها.",
+  pocketBody: "تحميل واحد. خمس أدوات جاهزة، وثلاث في الطريق.",
+  footNote: "مجاني بفضل إعلانات فيديو قصيرة. ملفاتك لا تغادر هاتفك أبدًا.",
   footPolicy: "سياسة الخصوصية",
   footTagline: "أدوات للملفات والوسائط تبقى على هاتفك.",
   footExplore: "استكشف",
   footYours: "التخصيص",
   footApp: "التطبيق",
-  footVersion: "الإصدار 1.2.1",
-  footSize: "حجم التحميل 46 ميجابايت",
+  footVersion: "الإصدار 1.3.0",
+  footSize: "حجم التحميل 44 ميجابايت",
   footAndroid: "أندرويد 7.0 أو أحدث",
   footReleases: "ملاحظات الإصدار",
   footCopy: "© 2026 رابيت",
@@ -112,6 +110,8 @@ function save(key, value) {
 }
 
 const langToggle = document.getElementById("lang-toggle");
+const pageTitle = document.querySelector("title");
+const pageTitleEn = document.title;
 
 function applyLanguage(lang) {
   const copy = lang === "ar" ? ar : en;
@@ -124,6 +124,10 @@ function applyLanguage(lang) {
     el.innerHTML = copy[el.dataset.i18nHtml] ?? en[el.dataset.i18nHtml];
   });
   langToggle.setAttribute("aria-label", lang === "ar" ? "Switch to English" : "التبديل إلى العربية");
+  // Pages other than the home page carry their Arabic title on <title data-ar>.
+  if (pageTitle?.dataset.ar) {
+    document.title = lang === "ar" ? pageTitle.dataset.ar : pageTitleEn;
+  }
 }
 
 applyLanguage(root.lang === "ar" ? "ar" : "en");
@@ -154,10 +158,10 @@ themeToggle.addEventListener("click", () => {
 });
 
 const nav = document.querySelector(".nav");
-const navLinks = [...document.querySelectorAll(".nav__links a")].map((link) => ({
-  link,
-  section: document.querySelector(link.getAttribute("href")),
-}));
+// Only the home page's in-page links track a section; other pages link to "/#section".
+const navLinks = [...document.querySelectorAll('.nav__links a[href^="#"]')]
+  .map((link) => ({ link, section: document.querySelector(link.getAttribute("href")) }))
+  .filter(({ section }) => section);
 
 // A link is active while its section crosses a line just under the sticky nav.
 function markActiveLink() {
