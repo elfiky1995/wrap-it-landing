@@ -6,7 +6,7 @@
     <title data-ar="سياسة الخصوصية - Wrap It">Privacy policy - Wrap It</title>
     <meta
       name="description"
-      content="What the Wrap It Android app collects, what stays on your phone, and the choices you have about ads and crash reports."
+      content="What the Wrap It Android app collects, what stays on your phone, and the choices you have about ads, crash reports and feedback."
     />
     <meta name="theme-color" content="#F7F8FC" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
@@ -132,11 +132,13 @@
       <!-- English -->
       <article data-lang="en" lang="en" dir="ltr">
         <h1>Privacy policy</h1>
-        <p class="policy__date">Last updated: 21 October 2026</p>
+        <p class="policy__date">Last updated: 22 October 2026</p>
 
         <p>
           Wrap It is an Android app of file and media tools. It has no accounts and no server of
-          its own. This page explains what leaves your phone, why, and the choices you have.
+          its own: what does leave your phone goes to the services named below, mostly Google's.
+          Feedback you send, for example, is stored in Google Firebase. This page explains what
+          leaves your phone, why, and the choices you have.
         </p>
 
         <h2>Your files stay on your phone</h2>
@@ -188,6 +190,41 @@
           crash reports.
         </p>
 
+        <h2>Feedback and suggestions</h2>
+        <p>
+          Two screens under Settings → Support let you write to the developer. What you send
+          there is stored in <strong>Google Firebase (Cloud Firestore)</strong>, which is Google's
+          service, not a server of our own.
+        </p>
+        <ul>
+          <li>
+            <strong>Feedback</strong> sends a 1–5 star rating, a topic (problem, idea, praise or
+            other), your message and, only if you add one, an email address so the developer can
+            reply. It also includes the app version, Android version, phone model and the app's
+            language. Only the developer can read it.
+          </li>
+          <li>
+            <strong>Requested features</strong> stores a suggestion's title and description, its
+            language and the app version. A new suggestion is visible only to you until the
+            developer reviews it. Once approved, its text is shown to everyone who uses the app,
+            and the developer may edit its wording or add a translation. Votes are counted once
+            per install.
+          </li>
+        </ul>
+        <p>
+          To tie votes and suggestions to one install, the app signs in to Firebase
+          <strong>anonymously</strong>: a random ID, with no account, name or email. It's used
+          only for feedback and suggestions.
+        </p>
+        <p>
+          These screens go online only when you open them, and nothing you write leaves your phone
+          until you send it. Your files, recordings and scans are never included.
+        </p>
+        <p>
+          <strong>Rating Wrap It on Google Play</strong> opens the Play Store, and Google may show
+          its own review sheet in the app. Google handles that rating; the app never sees it.
+        </p>
+
         <h2>Other times the app goes online</h2>
         <ul>
           <li>
@@ -202,6 +239,11 @@
             <strong>Update checks</strong> ask GitHub and Expo for a newer version. These requests
             carry no personal information beyond what any web request does (such as your IP
             address).
+          </li>
+          <li>
+            <strong>Feedback and Requested features</strong>: sending feedback, a suggestion or a
+            vote, and loading the Requested features board, reach Google Firebase as described
+            above.
           </li>
         </ul>
 
@@ -221,10 +263,12 @@
 
         <h2>Your rights</h2>
         <p>
-          The app keeps no data about you on any server of ours, so there is nothing for us to
-          export or delete. For data held by the ad network or Firebase, use the controls above
-          or their own privacy pages. Uninstalling the app removes everything it stored on your
-          phone.
+          You can ask for your feedback or suggestions to be deleted: open an issue at the contact
+          link below, or reply from the email address you left with your feedback. Suggestions
+          are tied only to a random ID, so we can't link one to you without details you give us,
+          such as its wording. For crash reports and the ad network's data, use the controls
+          above or Google's own privacy pages. Uninstalling the app removes everything it stored
+          on your phone.
         </p>
 
         <h2>Changes and contact</h2>
@@ -239,11 +283,13 @@
       <!-- العربية -->
       <article data-lang="ar" lang="ar" dir="rtl">
         <h1>سياسة الخصوصية</h1>
-        <p class="policy__date">آخر تحديث: 21 أكتوبر 2026</p>
+        <p class="policy__date">آخر تحديث: 22 أكتوبر 2026</p>
 
         <p>
-          Wrap It تطبيق أندرويد لأدوات الملفات والوسائط، بلا حسابات وبلا خادم خاص به. توضح هذه
-          الصفحة ما الذي يخرج من هاتفك ولماذا، والخيارات المتاحة لك.
+          Wrap It تطبيق أندرويد لأدوات الملفات والوسائط، بلا حسابات وبلا خادم خاص به. وما يخرج من
+          هاتفك يذهب إلى الخدمات المذكورة أدناه، ومعظمها من Google: فالملاحظات التي ترسلها مثلًا
+          تُحفظ في Google Firebase. توضح هذه الصفحة ما الذي يخرج من هاتفك ولماذا، والخيارات
+          المتاحة لك.
         </p>
 
         <h2>ملفاتك تبقى على هاتفك</h2>
@@ -292,6 +338,38 @@
           إيقافها من الإعدادات ← التطبيق ← إرسال تقارير الأعطال.
         </p>
 
+        <h2>الملاحظات والاقتراحات</h2>
+        <p>
+          في الإعدادات ← الدعم شاشتان تتيحان لك مراسلة المطوّر. وما ترسله منهما يُحفظ في
+          <strong dir="ltr">Google Firebase (Cloud Firestore)</strong>، وهي خدمة من Google وليست خادمًا خاصًا
+          بنا.
+        </p>
+        <ul>
+          <li>
+            <strong>الملاحظات</strong> ترسل تقييمًا من 1 إلى 5 نجوم، وموضوعًا (مشكلة أو فكرة أو إشادة
+            أو غير ذلك)، ورسالتك، وبريدًا إلكترونيًا إن أضفته فقط ليتمكن المطوّر من الرد عليك. وتتضمن
+            أيضًا إصدار التطبيق وإصدار أندرويد وطراز الهاتف ولغة التطبيق. ولا يقرؤها أحد غير المطوّر.
+          </li>
+          <li>
+            <strong>الميزات المطلوبة</strong> تحفظ عنوان الاقتراح ووصفه ولغته وإصدار التطبيق. يظهر
+            الاقتراح الجديد لك وحدك حتى يراجعه المطوّر، وبعد الموافقة عليه يظهر نصه لكل مستخدمي
+            التطبيق، وقد يعدّل المطوّر صياغته أو يضيف له ترجمة. ويُحتسب صوت واحد لكل تثبيت.
+          </li>
+        </ul>
+        <p>
+          ولربط الأصوات والاقتراحات بتثبيت واحد، يسجّل التطبيق الدخول إلى Firebase
+          <strong>بشكل مجهول</strong>: معرّف عشوائي، بلا حساب ولا اسم ولا بريد إلكتروني، ولا يُستخدم
+          إلا للملاحظات والاقتراحات.
+        </p>
+        <p>
+          لا تتصل هاتان الشاشتان بالإنترنت إلا عندما تفتحهما، ولا يخرج ما تكتبه من هاتفك حتى ترسله.
+          ولا تُرفق ملفاتك أو تسجيلاتك أو مسوحاتك أبدًا.
+        </p>
+        <p>
+          <strong>تقييم Wrap It على Google Play</strong> يفتح متجر Play، وقد تعرض Google نافذة
+          التقييم الخاصة بها داخل التطبيق. تتولى Google هذا التقييم، ولا يراه التطبيق أبدًا.
+        </p>
+
         <h2>متى يتصل التطبيق بالإنترنت أيضًا</h2>
         <ul>
           <li>
@@ -304,6 +382,10 @@
           <li>
             <strong>البحث عن تحديثات</strong> يسأل GitHub وExpo عن إصدار أحدث، ولا يحمل أي معلومات
             شخصية غير ما يحمله أي طلب على الإنترنت (مثل عنوان IP).
+          </li>
+          <li>
+            <strong>الملاحظات والميزات المطلوبة</strong>: إرسال ملاحظة أو اقتراح أو صوت، وتحميل لوحة
+            الميزات المطلوبة، كلها تتصل بخدمة Google Firebase كما هو موضّح أعلاه.
           </li>
         </ul>
 
@@ -319,9 +401,11 @@
 
         <h2>حقوقك</h2>
         <p>
-          لا يحتفظ التطبيق بأي بيانات عنك على خادم خاص بنا، فلا يوجد ما نصدّره أو نحذفه. أما
-          البيانات لدى الشبكة الإعلانية أو Firebase فاستخدم الخيارات أعلاه أو صفحات الخصوصية
-          الخاصة بها. وحذف التطبيق يزيل كل ما حفظه على هاتفك.
+          يمكنك طلب حذف ملاحظاتك أو اقتراحاتك: افتح مشكلة عبر رابط التواصل أدناه، أو ردّ من البريد
+          الإلكتروني الذي تركته مع ملاحظتك. الاقتراحات مرتبطة بمعرّف عشوائي فقط، فلا يمكننا ربط أي
+          منها بك دون تفاصيل تعطيها لنا، مثل نص الاقتراح. أما تقارير الأعطال وبيانات الشبكة
+          الإعلانية فاستخدم الخيارات أعلاه أو صفحات الخصوصية لدى Google. وحذف التطبيق يزيل كل ما
+          حفظه على هاتفك.
         </p>
 
         <h2>التغييرات والتواصل</h2>
